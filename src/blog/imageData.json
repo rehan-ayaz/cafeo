@@ -1,0 +1,534 @@
+{
+  "breakfast": [
+    {
+      "name": "breakfast-complete-cafe-breakfast-spread-hero.webp",
+      "alt": "Complete café breakfast spread",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "breakfast-scrambled-eggs-and-sourdough-toast.webp",
+      "alt": "Scrambled eggs and sourdough toast",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "breakfast-berry-pancakes-with-butter.webp",
+      "alt": "Berry pancakes with butter",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "breakfast-sliced-avocado-toast.webp",
+      "alt": "Sliced avocado toast",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "breakfast-black-coffee-and-pancakes-pairing.webp",
+      "alt": "Black coffee and pancakes pairing",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "breakfast-sunlit-morning-table-with-eggs-and-toast.webp",
+      "alt": "Sunlit morning table with eggs and toast",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "starters": [
+    {
+      "name": "starters-assorted-appetizer-platter-hero.webp",
+      "alt": "Assorted appetizer platter",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "starters-garlic-bread-slices.webp",
+      "alt": "Garlic bread slices",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "starters-golden-french-fries-in-a-bowl.webp",
+      "alt": "Golden French fries in a bowl",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "starters-glazed-chicken-wings.webp",
+      "alt": "Glazed chicken wings",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "starters-nachos-with-salsa.webp",
+      "alt": "Nachos with salsa",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "starters-tomato-basil-crostini-on-slate.webp",
+      "alt": "Tomato basil crostini on slate",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "burgers": [
+    {
+      "name": "burgers-cheddar-burger-and-club-sandwich-comparison-hero.webp",
+      "alt": "Cheddar burger and club sandwich comparison",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "burgers-gourmet-angus-burger-with-caramelized-onions.webp",
+      "alt": "Gourmet Angus burger with caramelized onions",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "burgers-grilled-chicken-sandwich.webp",
+      "alt": "Grilled chicken sandwich",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "burgers-classic-layered-club-sandwich.webp",
+      "alt": "Classic layered club sandwich",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "burgers-cheddar-onion-and-truffle-aioli-ingredients.webp",
+      "alt": "Cheddar onion and truffle aioli ingredients",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "burgers-burger-meal-on-cafe-table.webp",
+      "alt": "Burger meal on café table",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "pizza": [
+    {
+      "name": "pizza-margherita-pizza-with-fettuccine-beside-it-hero.webp",
+      "alt": "Margherita pizza with fettuccine beside it",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "pizza-wood-fired-margherita-pizza.webp",
+      "alt": "Wood-fired Margherita pizza",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "pizza-creamy-fettuccine.webp",
+      "alt": "Creamy fettuccine",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "pizza-pizza-slice-on-spatula.webp",
+      "alt": "Pizza slice on spatula",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "pizza-pasta-basil-and-tomatoes.webp",
+      "alt": "Pasta basil and tomatoes",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "pizza-shared-italian-inspired-table.webp",
+      "alt": "Shared Italian-inspired table",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "main-course": [
+    {
+      "name": "main-course-salmon-vegetables-and-mash-hero.webp",
+      "alt": "Salmon vegetables and mash",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "main-course-grilled-chicken-with-lemon.webp",
+      "alt": "Grilled chicken with lemon",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "main-course-salmon-with-carrots-and-potatoes.webp",
+      "alt": "Salmon with carrots and potatoes",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "main-course-roasted-vegetables-and-potato-sides.webp",
+      "alt": "Roasted vegetables and potato sides",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "main-course-lemon-dill-cream-and-salmon.webp",
+      "alt": "Lemon dill cream and salmon",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "main-course-main-course-and-citrus-soda.webp",
+      "alt": "Main course and citrus soda",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "cakes": [
+    {
+      "name": "cakes-chocolate-cake-cheesecake-and-brownie-hero.webp",
+      "alt": "Chocolate cake cheesecake and brownie",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "cakes-chocolate-layer-cake.webp",
+      "alt": "Chocolate layer cake",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "cakes-new-york-cheesecake-with-strawberry-coulis.webp",
+      "alt": "New York cheesecake with strawberry coulis",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "cakes-walnut-fudge-brownie.webp",
+      "alt": "Walnut fudge brownie",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "cakes-chocolate-cake-slice-close-up.webp",
+      "alt": "Chocolate cake slice close-up",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "cakes-coffee-and-fudge-brownie.webp",
+      "alt": "Coffee and fudge brownie",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "waffles": [
+    {
+      "name": "waffles-belgian-waffle-and-vanilla-ice-cream-hero.webp",
+      "alt": "Belgian waffle and vanilla ice cream",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "waffles-golden-belgian-waffle.webp",
+      "alt": "Golden Belgian waffle",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "waffles-vanilla-ice-cream-scoops.webp",
+      "alt": "Vanilla ice cream scoops",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "waffles-chocolate-drizzled-waffles.webp",
+      "alt": "Chocolate drizzled waffles",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "waffles-fresh-berries-and-fruit-toppings.webp",
+      "alt": "Fresh berries and fruit toppings",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "waffles-premium-waffles-for-two.webp",
+      "alt": "Premium waffles for two",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "coffee": [
+    {
+      "name": "coffee-espresso-americano-cappuccino-latte-hero.webp",
+      "alt": "Espresso Americano cappuccino latte",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "coffee-double-espresso-in-demitasse.webp",
+      "alt": "Double espresso in demitasse",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "coffee-americano-in-glass-cup.webp",
+      "alt": "Americano in glass cup",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "coffee-foamy-cappuccino.webp",
+      "alt": "Foamy cappuccino",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "coffee-silky-latte-art.webp",
+      "alt": "Silky latte art",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "coffee-coffee-beans-and-portafilter.webp",
+      "alt": "Coffee beans and portafilter",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "mocha": [
+    {
+      "name": "mocha-mocha-and-hot-chocolate-cups-hero.webp",
+      "alt": "Mocha and hot chocolate cups",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "mocha-mocha-with-microfoam.webp",
+      "alt": "Mocha with microfoam",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "mocha-cocoa-dusted-belgian-hot-chocolate.webp",
+      "alt": "Cocoa-dusted Belgian hot chocolate",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "mocha-cocoa-powder-and-chocolate.webp",
+      "alt": "Cocoa powder and chocolate",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "mocha-dark-chocolate-shavings.webp",
+      "alt": "Dark chocolate shavings",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "mocha-chocolate-drinks-on-marble.webp",
+      "alt": "Chocolate drinks on marble",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "iced-coffee": [
+    {
+      "name": "iced-coffee-iced-coffee-iced-latte-iced-mocha-hero.webp",
+      "alt": "Iced coffee iced latte iced mocha",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "iced-coffee-classic-black-iced-coffee.webp",
+      "alt": "Classic black iced coffee",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "iced-coffee-iced-latte-with-milk-swirls.webp",
+      "alt": "Iced latte with milk swirls",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "iced-coffee-iced-mocha-with-chocolate.webp",
+      "alt": "Iced mocha with chocolate",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "iced-coffee-coffee-and-crystal-clear-ice.webp",
+      "alt": "Coffee and crystal clear ice",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "iced-coffee-black-cold-brew-on-cafe-table.webp",
+      "alt": "Black cold brew on café table",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "juices": [
+    {
+      "name": "juices-fresh-juice-smoothie-and-milkshake-hero.webp",
+      "alt": "Fresh juice smoothie and milkshake",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "juices-fresh-valencia-orange-juice.webp",
+      "alt": "Fresh Valencia orange juice",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "juices-pink-strawberry-smoothie.webp",
+      "alt": "Pink strawberry smoothie",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "juices-chocolate-hazelnut-milkshake.webp",
+      "alt": "Chocolate hazelnut milkshake",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "juices-sliced-fresh-fruit.webp",
+      "alt": "Sliced fresh fruit",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "juices-three-creamy-and-clear-drinks.webp",
+      "alt": "Three creamy and clear drinks",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "mocktails": [
+    {
+      "name": "mocktails-three-nonalcoholic-mocktails-hero.webp",
+      "alt": "Three nonalcoholic mocktails",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "mocktails-mint-and-lime-mocktail.webp",
+      "alt": "Mint and lime mocktail",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "mocktails-strawberry-mocktail.webp",
+      "alt": "Strawberry mocktail",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "mocktails-blood-orange-mocktail.webp",
+      "alt": "Blood orange mocktail",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "mocktails-fresh-mint-and-citrus-garnish.webp",
+      "alt": "Fresh mint and citrus garnish",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "mocktails-passionfruit-mint-mocktail.webp",
+      "alt": "Passionfruit mint mocktail",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "cafe-date": [
+    {
+      "name": "cafe-date-elegant-cafe-table-for-two-hero.webp",
+      "alt": "Elegant café table for two",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "cafe-date-coffee-and-shared-dessert.webp",
+      "alt": "Coffee and shared dessert",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "cafe-date-modern-warm-cafe-interior.webp",
+      "alt": "Modern warm café interior",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "cafe-date-sharing-plates-on-table.webp",
+      "alt": "Sharing plates on table",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "cafe-date-espresso-and-cheesecake.webp",
+      "alt": "Espresso and cheesecake",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "cafe-date-cozy-window-booth.webp",
+      "alt": "Cozy window booth",
+      "width": 960,
+      "height": 540
+    }
+  ],
+  "dining": [
+    {
+      "name": "dining-warm-contemporary-restaurant-interior-hero.webp",
+      "alt": "Warm contemporary restaurant interior",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "dining-salmon-on-ceramic-plate.webp",
+      "alt": "Salmon on ceramic plate",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "dining-elegant-glassware-and-table-setting.webp",
+      "alt": "Elegant glassware and table setting",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "dining-coffee-service-with-porcelain-cup.webp",
+      "alt": "Coffee service with porcelain cup",
+      "width": 600,
+      "height": 480
+    },
+    {
+      "name": "dining-plated-dessert-close-up.webp",
+      "alt": "Plated dessert close-up",
+      "width": 960,
+      "height": 540
+    },
+    {
+      "name": "dining-inviting-cafe-ambience.webp",
+      "alt": "Inviting café ambience",
+      "width": 960,
+      "height": 540
+    }
+  ]
+}

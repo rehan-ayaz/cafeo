@@ -1,0 +1,16 @@
+export const articleTips = {
+  breakfast: ['Choose the breakfast dish first, then decide whether the coffee should be short, long or milky.', 'Keep maple syrup at the side until you have tried a bite of pancake with the berries.'],
+  starters: ['Count the pieces before ordering a shared plate so everyone can have a first taste.', 'Choose one crisp starter and one fresh option if the main courses are rich.'],
+  burgers: ['Read the bread and sauce descriptions as carefully as the patty or sandwich filling.', 'Check which side is included before adding another order for the table.'],
+  pizza: ['Ask about pizza size when sharing, especially if you are also ordering pasta.', 'Choose contrasting sauces if you want the two dishes to feel distinct.'],
+  'main-course': ['Check the included sides and sauce before building the rest of the meal.', 'Ask a specific question about portion or preparation when the description leaves it unclear.'],
+  cakes: ['Choose two contrasting textures when sharing desserts, such as cool cheesecake and warm brownie.', 'Try the coffee with a plain bite of dessert before adding the fruit sauce.'],
+  waffles: ['Divide a shared waffle before the toppings melt into the pockets.', 'Keep some crisp edge for a final bite with the softened cream or gelato.'],
+  coffee: ['Compare cup sizes and shot counts when deciding how strong a long coffee will taste.', 'Ask whether a named latte contains sweetened milk before adding syrup.'],
+  mocha: ['Check whether espresso is part of the recipe and which chocolate the café uses.', 'Taste the drink as served before ordering extra sweet toppings.'],
+  'iced-coffee': ['Stir an iced mocha gently from the base to distribute the chocolate.', 'Notice how melting ice changes the drink during a longer café visit.'],
+  juices: ['Read the liquid base when comparing smoothies and ask about dairy or ice cream when relevant.', 'Treat a rich milkshake as part of the dessert order when deciding how much food to share.'],
+  mocktails: ['Try the drink near the garnish to notice the mint or citrus aroma.', 'Stir a fruit purée gently so it combines with the soda while keeping the bubbles lively.'],
+  'cafe-date': ['Send the group the time, location and booking name in one message.', 'Ask about table size and seating needs when confirming a group visit.'],
+  dining: ['Choose the time and seating arrangement around the reason for the visit.', 'Give clear feedback about a dish or drink while the team can still respond.'],
+};

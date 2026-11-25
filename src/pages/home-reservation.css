@@ -1,0 +1,21 @@
+.home-reservation .reservation-main-block {
+  display: grid;
+  min-width: 0;
+}
+
+.home-reservation .reservation-block {
+  display: grid;
+  align-content: center;
+  gap: 24px;
+}
+
+.home-reservation .reservation-btn-block,
+.home-reservation .reservation-block .section-title {
+  position: relative;
+  z-index: 1;
+}
+
+.home-reservation .reservation-image-1,
+.home-reservation .reservation-image-2 {
+  pointer-events: none;
+}

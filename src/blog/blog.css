@@ -1,0 +1,77 @@
+.cafeo-blog {
+  --journal-ink: var(--heading-font-color);
+  --journal-burgundy: var(--skin);
+  --journal-cream: var(--grey);
+  --journal-line: var(--border-color-black);
+  background: var(--journal-cream);
+  color: var(--journal-ink);
+}
+.cafeo-blog main { background: var(--journal-cream); }
+.cafeo-blog main h1, .cafeo-blog main h2, .cafeo-blog main h3 { overflow-wrap: anywhere; }
+.cafeo-blog-banner .pagetitle-heading { color: inherit; }
+.cafeo-blog-section, .cafeo-blog-article-page { padding-top: clamp(2rem, 5vw, 5rem); padding-bottom: clamp(3rem, 6vw, 6rem); }
+.cafeo-blog-section h2, .cafeo-blog-article-page h2 { font-size: clamp(1.45rem, 3vw, 2.25rem); line-height: 1.28; }
+.cafeo-blog-card h3, .cafeo-blog-card h2 { font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.35; margin: 0 0 .65rem; color: inherit; }
+.cafeo-blog-card { min-width: 0; border: 1px solid var(--journal-line); background: var(--white); }
+.cafeo-blog-card-link { display: grid; height: 100%; color: inherit; text-decoration: none; }
+.cafeo-blog-card-link:hover { color: inherit; }
+.cafeo-blog-card-link:hover h2, .cafeo-blog-card-link:hover h3 { text-decoration: underline; text-underline-offset: .18em; }
+.cafeo-blog-card img { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; display: block; }
+.cafeo-blog-card-content { padding: clamp(1rem, 2.3vw, 1.6rem); display: flex; flex-direction: column; justify-content: flex-start; }
+.cafeo-blog-card-content > p { margin: 0 0 .75rem; }
+.cafeo-blog-featured { margin-bottom: clamp(2rem, 5vw, 4rem); }
+.cafeo-blog-featured .cafeo-blog-card-link { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; }
+.cafeo-blog-featured img { aspect-ratio: 16 / 9; }
+.cafeo-blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2rem); }
+.cafeo-blog-category, .cafeo-blog-read { color: var(--journal-burgundy); font-weight: 700; }
+.cafeo-blog-category { text-transform: uppercase; letter-spacing: .07em; font-size: .76rem; }
+.cafeo-blog-read { margin-top: auto; }
+.cafeo-blog-details { display: flex; flex-wrap: wrap; gap: .15rem .95rem; font-size: .84rem; color: var(--body-font-color); }
+.cafeo-blog-filters { display: grid; gap: 1rem; margin: 1.25rem 0 .8rem; }
+.cafeo-blog-search { max-width: 32rem; }
+.cafeo-blog-search input { display: block; width: 100%; padding: .75rem; color: var(--journal-ink); background: var(--white); border: 1px solid var(--body-font-color-dark); }
+.cafeo-blog-categories { display: flex; flex-wrap: wrap; gap: .55rem; }
+.cafeo-blog-categories button, .cafeo-blog-more { padding: .6rem .85rem; border: 1px solid var(--journal-burgundy); color: var(--journal-burgundy); background: transparent; }
+.cafeo-blog-categories button[aria-pressed=true], .cafeo-blog-more:hover { background: var(--journal-burgundy); color: white; }
+.cafeo-blog-more { display: block; margin: 2rem auto 0; }
+.cafeo-blog-result { color: var(--body-font-color); margin-bottom: 1rem; }
+.cafeo-blog-breadcrumbs ol { display: flex; flex-wrap: wrap; gap: .2rem .75rem; padding: 0; list-style: none; margin: 0 0 2.25rem; font-size: .85rem; }
+.cafeo-blog-breadcrumbs li + li::before { content: '›'; margin-right: .75rem; }
+.cafeo-blog-article-header { max-width: 55rem; margin: 0 auto 2rem; text-align: center; }
+.cafeo-blog-article-header h1 { margin: .6rem auto 1rem; font-size: clamp(2rem, 5vw, 4.4rem); line-height: 1.13; color: var(--journal-ink); }
+.cafeo-blog-article-header .cafeo-blog-details { justify-content: center; }
+.cafeo-blog-excerpt { font-size: clamp(1rem, 2vw, 1.25rem); }
+.cafeo-blog-hero, .cafeo-blog-inline-photos img { display: block; width: 100%; height: auto; object-fit: cover; }
+.cafeo-blog-hero { aspect-ratio: 16 / 9; }
+.cafeo-blog-prose { max-width: 48rem; margin: clamp(1.8rem, 4vw, 3.75rem) auto 0; font-size: clamp(1rem, 1.8vw, 1.12rem); line-height: 1.72; }
+.cafeo-blog-prose section { margin: 2.3rem 0; }
+.cafeo-blog-prose h2 { scroll-margin-top: 110px; }
+.cafeo-blog-prose h3 { font-size: 1.13rem; margin: 1.2rem 0 .25rem; }
+.cafeo-blog-intro { font-size: 1.15em; }
+.cafeo-blog-toc, .cafeo-blog-highlights { border: 1px solid var(--journal-line); padding: clamp(1rem, 3vw, 1.8rem); background: var(--white); }
+.cafeo-blog-toc > p { font-weight: 700; color: var(--journal-ink); margin-bottom: .5rem; }
+.cafeo-blog-toc ol { margin-bottom: 0; padding-left: 1.35rem; }
+.cafeo-blog-prose a, .cafeo-blog-back, .cafeo-blog-breadcrumbs a { color: var(--journal-burgundy); text-decoration: underline; text-underline-offset: .15em; }
+.cafeo-blog-inline-photos { margin: 1.35rem 0; }
+.cafeo-blog-photo-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem; }
+.cafeo-blog-cta { background: var(--dark); padding: 1.4rem; display: flex; gap: .9rem; flex-wrap: wrap; }
+.cafeo-blog-cta .btn-block, .cafeo-blog-missing .btn-block { color: white; text-decoration: none; font-size: .95rem; }
+.cafeo-blog-missing .btn-block { background: var(--dark); }
+.cafeo-blog-related { margin: clamp(2.5rem, 6vw, 5rem) 0 1.5rem; }
+.cafeo-blog a:focus-visible, .cafeo-blog button:focus-visible, .cafeo-blog input:focus-visible { outline: 2px solid var(--skin); outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.cafeo-blog) { scroll-behavior: smooth; }
+}
+@media (max-width: 991px) {
+  .cafeo-blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .cafeo-blog-grid, .cafeo-blog-featured .cafeo-blog-card-link { grid-template-columns: minmax(0, 1fr); }
+}
+
+.cafeo-blog-article-page { padding-top: 0; }
+.cafeo-blog-post-banner { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+.cafeo-blog-post-banner h1 { color: var(--white); }
+.cafeo-blog-post-banner .cafeo-blog-details, .cafeo-blog-post-banner a { color: var(--white); }
+.cafeo-blog-missing { min-height: 70vh; }
+.cafeo-blog-toc a[aria-current=location] { font-weight: 700; }
