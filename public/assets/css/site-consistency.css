@@ -24,7 +24,7 @@ body {
 .cafeo-blog-more {
   cursor: pointer;
   font-family: var(--body-font);
-  transition: background-color 220ms ease, color 220ms ease, filter 220ms ease, transform 220ms ease;
+  transition: background-color 220ms ease, color 220ms ease, filter 220ms ease;
 }
 
 .btn-block .btn-border-block {
@@ -45,7 +45,6 @@ body {
   .cafeo-blog-categories button:hover,
   .cafeo-blog-more:hover {
     filter: brightness(.92);
-    transform: translateY(-2px);
   }
 }
 
@@ -56,18 +55,93 @@ body {
   .cafeo-blog-more {
     transition: none;
   }
-
-  .btn-block:hover,
-  .reservation-add-button.menu-cart-link:hover,
-  .cafeo-blog-categories button:hover,
-  .cafeo-blog-more:hover {
-    transform: none;
-  }
 }
 
 .cafeo-section-action,
 .menu-section .cafeo-menu-tabs {
   margin-top: 28px;
+}
+
+/* Match Explore Menu's four inset lines: 500ms linear in both directions.
+   Existing border markup keeps its original interaction. Generated borders
+   cover the other buttons, including controls rendered after a cart update. */
+:where(button, [role="button"], .btn-block, .cart-button, .menu-1-tab-link,
+  .round-hover-btn-block, .gallery-lightbox-link, .w-pagination-next,
+  .w-pagination-previous, a.submit-button, .w-commerce-commercebuynowbutton) {
+  position: relative;
+}
+
+:is(button, [role="button"], .btn-block, .cart-button, .menu-1-tab-link,
+  .round-hover-btn-block, .gallery-lightbox-link, .w-pagination-next,
+  .w-pagination-previous, a.submit-button, .w-commerce-commercebuynowbutton)
+  :where(.btn-border-block) {
+  pointer-events: none;
+}
+
+:is(button, [role="button"], .btn-block, .cart-button, .menu-1-tab-link,
+  .round-hover-btn-block, .gallery-lightbox-link, .w-pagination-next,
+  .w-pagination-previous, a.submit-button, .w-commerce-commercebuynowbutton):not(
+  :has(> .btn-border-block)):not(.btn-block *)::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  pointer-events: none;
+  opacity: .5;
+  background-image: linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor),
+    linear-gradient(currentColor, currentColor);
+  background-position: left top, right bottom, right bottom, left top;
+  background-repeat: no-repeat;
+  background-size: 0% 1px, 1px 0%, 0% 1px, 1px 0%;
+  transition: background-size 500ms linear;
+}
+
+:is(button, [role="button"], .btn-block, .cart-button, .menu-1-tab-link,
+  .round-hover-btn-block, .gallery-lightbox-link, .w-pagination-next,
+  .w-pagination-previous, a.submit-button, .w-commerce-commercebuynowbutton):not(
+  :disabled):not([aria-disabled="true"]):not(:has(> .btn-border-block)):not(
+  .btn-block *):is(:hover, :focus-visible)::after {
+  background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+}
+
+:where(button, [role="button"], .cart-button, .menu-1-tab-link,
+  .w-pagination-next, .w-pagination-previous, a.submit-button,
+  .w-commerce-commercebuynowbutton):not(
+  .btn-block, .reservation-add-button, .cafeo-blog-categories button,
+  .cafeo-blog-more, .btn-block *) {
+  transition: filter 220ms ease;
+}
+
+@media (hover: hover) {
+  :where(button, [role="button"], .cart-button, .menu-1-tab-link,
+    .w-pagination-next, .w-pagination-previous, a.submit-button,
+    .w-commerce-commercebuynowbutton):not(
+    .btn-block, .reservation-add-button, .cafeo-blog-categories button,
+    .cafeo-blog-more, .btn-block *):not(:disabled):not([aria-disabled="true"]):hover {
+    filter: brightness(.92);
+  }
+}
+
+/* The gallery and round buttons receive their hover movement as inline styles. */
+.gallery-lightbox-link,
+.round-hover-btn-block {
+  transform: none !important;
+}
+
+.topbar-soical-item-link:hover {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(button, [role="button"], .btn-block, .cart-button, .menu-1-tab-link,
+    .round-hover-btn-block, .gallery-lightbox-link, .w-pagination-next,
+    .w-pagination-previous, a.submit-button, .w-commerce-commercebuynowbutton),
+  :is(button, [role="button"], .btn-block, .cart-button, .menu-1-tab-link,
+    .round-hover-btn-block, .gallery-lightbox-link, .w-pagination-next,
+    .w-pagination-previous, a.submit-button, .w-commerce-commercebuynowbutton)::after {
+    transition: none;
+  }
 }
 
 .cafeo-blog-highlights {
@@ -167,6 +241,67 @@ body {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 767px), (max-width: 991px) and (max-height: 500px) and (orientation: landscape) {
+  .pages:has(> .home-hero) {
+    --home-header-padding: 20px;
+    --home-header-controls: 44px;
+    --home-hero-gutter: 16px;
+  }
+
+  .pages:has(> .home-hero) > .header {
+    padding-block: var(--home-header-padding);
+  }
+
+  .home-hero > .container {
+    width: 100%;
+  }
+
+  .home-hero .hero-section-inner {
+    /* Keep the full hero in view with browser bars visible. Reserve room for
+       the overlay header while centering content within the remaining space. */
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-block-start: calc(var(--home-header-controls) + 2 * var(--home-header-padding) + var(--home-hero-gutter));
+    padding-block-end: var(--home-hero-gutter);
+  }
+}
+
+@media (max-width: 991px) and (max-height: 490px) {
+  .pages:has(> .home-hero) {
+    --home-header-padding: 8px;
+    --home-hero-gutter: 8px;
+  }
+
+  .home-hero .hero-pretitle {
+    margin-bottom: 4px;
+  }
+
+  .home-hero .hero-btn-block {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 991px) and (max-height: 350px) and (orientation: landscape) {
+  .pages:has(> .home-hero) {
+    --home-header-padding: 4px;
+    --home-hero-gutter: 4px;
+  }
+}
+
+@media (max-width: 479px) {
+  .pages:has(> .home-hero) .about-1-image-block {
+    height: clamp(224px, 64vw, 260px);
+  }
+
+  .pages:has(> .home-hero) :is(.about-info-single-image, .blog-list-grid .blog-image) {
+    height: clamp(174px, 49vw, 205px);
+  }
+
+  .home-testimonials .testimonial-author-wrapper {
+    height: clamp(280px, 76vw, 310px);
+  }
+}
+
 .home-testimonials .testimonial-next-portrait {
   display: none;
 }
@@ -181,11 +316,26 @@ body {
   .home-testimonials .testimonial-next-portrait {
     display: block;
     position: absolute;
-    inset: 66px 15px 0 auto;
+    inset: auto 15px 0 auto;
     width: calc(17% - 24px);
-    height: calc(100% - 66px);
+    max-height: calc(100% - 66px);
     object-fit: contain;
-    object-position: top right;
+    object-position: bottom right;
     pointer-events: none;
   }
+}
+
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+  .home-testimonials .testimonial-next-portrait {
+    opacity: 0;
+  }
+
+  .home-testimonials .testimonial-next-portrait[data-visible="true"] {
+    animation: testimonial-portrait-fade-in 500ms ease-out both;
+  }
+}
+
+@keyframes testimonial-portrait-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
