@@ -19,7 +19,8 @@ export function MenuCategories() {
 
 export default function MenuShowcase({ featured = false, heading, selection }) {
   const [active, setActive] = useState(0);
-  const { grid, selectTab } = useMenuMotion(active, setActive);
+  const hasTabs = !featured && !selection;
+  const { grid, selectTab } = useMenuMotion(active, setActive, hasTabs);
   const items = selection ?? (featured ? featuredItems : menuItems.filter(item => item.category === categories[active]));
 
   return <section className="menu-section section-padding-100">
@@ -28,7 +29,7 @@ export default function MenuShowcase({ featured = false, heading, selection }) {
         <div className="section-pretitle">Cafeo Selection</div>
         <h2 className="section-heading">{heading ?? (featured ? 'Cafeo Favorites' : 'Explore the Cafeo Menu')}</h2>
       </div>
-      {!featured && !selection && <div className="menu-1-tabs-menu center-menu cafeo-menu-tabs" aria-label="Filter menu items">
+      {hasTabs && <div className="menu-1-tabs-menu center-menu cafeo-menu-tabs" aria-label="Filter menu items">
         {categories.map((category, index) => <button type="button" key={category}
           className={'menu-1-tab-link w-tab-link' + (active === index ? ' w--current' : '')}
           aria-pressed={active === index} onClick={() => selectTab(index)}>{category}</button>)}

@@ -62,6 +62,44 @@ body {
   margin-top: 28px;
 }
 
+.demo-form-block {
+  margin-bottom: 15px;
+}
+
+.demo-form-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.demo-form-success {
+  display: block;
+  margin-top: 12px;
+}
+
+.demo-consent {
+  position: relative;
+}
+
+.demo-consent input {
+  position: absolute;
+  inset-inline-start: 0;
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+}
+
+.demo-consent input:checked + .checkbox {
+  background: #3898ec url("../images/custom-checkbox-checkmark.589d534424_7fd1df.svg") center / cover no-repeat;
+  border-color: #3898ec;
+}
+
+.demo-consent input:focus-visible + .checkbox {
+  box-shadow: 0 0 3px 1px #3898ec;
+}
+
 /* Match Explore Menu's four inset lines: 500ms linear in both directions.
    Existing border markup keeps its original interaction. Generated borders
    cover the other buttons, including controls rendered after a cart update. */
@@ -225,6 +263,11 @@ body {
   overflow: hidden;
 }
 
+.gallery-image[width][height],
+.gallery-1-image[width][height] {
+  height: auto;
+}
+
 .footer {
   background-image: linear-gradient(rgb(0 0 0 / 85%), rgb(0 0 0 / 85%)),
     url("../images/footer-lakeside-night.webp");
@@ -263,6 +306,21 @@ body {
     min-height: 100svh;
     padding-block-start: calc(var(--home-header-controls) + 2 * var(--home-header-padding) + var(--home-hero-gutter));
     padding-block-end: var(--home-hero-gutter);
+  }
+
+  .home-hero .hero-title {
+    font-size: 44px;
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 374px) {
+  .home-hero > .container {
+    padding-inline: 8px;
+  }
+
+  .home-hero .hero-title {
+    font-size: min(44px, calc((100vw - 20px) / 7.72));
   }
 }
 

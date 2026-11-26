@@ -1,6 +1,51 @@
-import { useId, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Quantity, useReservationCart } from './ReservationCart';
 import '../pages/menu-preview.css';
+
+const MenuItemCard = memo(function MenuItemCard({ item, quantity, onChange, onPreview }) {
+  return (
+    <div data-menu-item={item.image} role="listitem" className="w-dyn-item">
+      <div
+        style={{ backgroundColor: 'rgb(255,247,239)', borderColor: 'rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+        className="menu-item-block"
+      >
+        <div className="menu-content-block">
+          <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#c32929', fontWeight: 600, marginBottom: '6px' }}>
+            {item.subcategory}
+          </div>
+          <a href={item.link} className="menu-item-link menu-short-title" title={item.title}>{item.menuTitle}</a>
+          <div style={{ fontSize: '13px', color: '#666', marginTop: '6px', marginBottom: '14px', lineHeight: '1.45' }}>
+            {item.desc}
+          </div>
+          <div className="menu-price-box">
+            <div>
+              <Quantity item={item} quantity={quantity} onChange={onChange} />
+            </div>
+            <div>
+              <div className="menu-price-text">{item.price}</div>
+            </div>
+          </div>
+        </div>
+        <div className="menu-thumbnail">
+          <button type="button" className="menu-preview-trigger" aria-haspopup="dialog"
+            aria-label={`View ${item.menuTitle}`} onClick={() => onPreview(item)}>
+            <img
+              loading="lazy"
+              decoding="async"
+              width="417"
+              height="413"
+              alt={item.title}
+              src={item.image}
+              className="menu-image"
+              style={{ objectFit: 'cover' }}
+            />
+            <span className="round-btn-text">View</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 export default function MenuItemGrid({ items, grid }) {
   const cart = useReservationCart();
@@ -16,45 +61,8 @@ export default function MenuItemGrid({ items, grid }) {
     <div className="menu-section-inner">
       <div className="w-dyn-list">
         <div ref={grid} role="list" className="menu-item-grid w-dyn-items">
-          {items.map((item) => (
-            <div key={item.image} data-menu-item={item.image} role="listitem" className="w-dyn-item">
-              <div
-                style={{ backgroundColor: 'rgb(255,247,239)', borderColor: 'rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
-                className="menu-item-block"
-              >
-                <div className="menu-content-block">
-                  <div style={{ fontSize: '11px', textTransform: 'uppercase', letterSpacing: '1.5px', color: '#c32929', fontWeight: 600, marginBottom: '6px' }}>
-                    {item.subcategory}
-                  </div>
-                  <a href={item.link} className="menu-item-link menu-short-title" title={item.title}>{item.menuTitle}</a>
-                  <div style={{ fontSize: '13px', color: '#666', marginTop: '6px', marginBottom: '14px', lineHeight: '1.45' }}>
-                    {item.desc}
-                  </div>
-                  <div className="menu-price-box">
-                    <div>
-                      <Quantity item={item} cart={cart} />
-                    </div>
-                    <div>
-                      <div className="menu-price-text">{item.price}</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="menu-thumbnail">
-                  <button type="button" className="menu-preview-trigger" aria-haspopup="dialog"
-                    aria-label={`View ${item.menuTitle}`} onClick={() => setPreview(item)}>
-                    <img
-                      loading="lazy"
-                      alt={item.title}
-                      src={item.image}
-                      className="menu-image"
-                      style={{ objectFit: 'cover' }}
-                    />
-                    <span className="round-btn-text">View</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+          {items.map(item => <MenuItemCard key={item.image} item={item} quantity={cart.quantityOf(item)}
+            onChange={cart.change} onPreview={setPreview} />)}
         </div>
       </div>
     </div>
@@ -69,7 +77,7 @@ export default function MenuItemGrid({ items, grid }) {
           <p>{preview.desc}</p>
           <div className="menu-preview-actions">
             <strong>{preview.price}</strong>
-            <Quantity item={preview} cart={cart} />
+            <Quantity item={preview} quantity={cart.quantityOf(preview)} onChange={cart.change} />
           </div>
         </div>
         <button type="button" className="menu-preview-close" autoFocus aria-label="Close product details"

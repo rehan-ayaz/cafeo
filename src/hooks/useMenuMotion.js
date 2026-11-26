@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'react';
 
 let gsapRequested = false;
 
-export function useMenuMotion(activeTab, setActiveTab) {
+export function useMenuMotion(activeTab, setActiveTab, hasTabs = true) {
   const grid = useRef(null);
   const before = useRef(null);
   const cleanup = useRef([]);
@@ -12,13 +12,13 @@ export function useMenuMotion(activeTab, setActiveTab) {
   }
 
   useLayoutEffect(() => {
-    if (window.gsap || gsapRequested || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!hasTabs || window.gsap || gsapRequested || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsapRequested = true;
     const script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
     script.async = true;
     document.head.append(script);
-  }, []);
+  }, [hasTabs]);
 
   function selectTab(index) {
     if (index === activeTab) return;

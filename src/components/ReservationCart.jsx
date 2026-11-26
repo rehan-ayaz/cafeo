@@ -1,10 +1,10 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 import { menuItems } from '../menuCatalog';
 import './reservation-cart.css';
 
 const cartKey = 'cafeo.reservation.cart';
 
-export function readStored(storage, key) {
+function readStored(storage, key) {
   try {
     const data = JSON.parse(window[storage].getItem(key));
     return data && typeof data === 'object' && !Array.isArray(data) ? data : {};
@@ -13,7 +13,7 @@ export function readStored(storage, key) {
   }
 }
 
-export function writeStored(storage, key, value) {
+function writeStored(storage, key, value) {
   try {
     window[storage].setItem(key, JSON.stringify(value));
   } catch {
@@ -27,33 +27,39 @@ export const money = cents => usd.format(cents / 100);
 
 const CartContext = createContext(null);
 
+function getQuantity(quantities, item) {
+  const quantity = quantities[item.image];
+  return Number.isSafeInteger(quantity) && quantity > 0 && quantity <= 999 ? quantity : 0;
+}
+
 export function useReservationCart() {
   return useContext(CartContext);
 }
 
 export function ReservationCartProvider({ children }) {
   const [quantities, setQuantities] = useState(() => readStored('localStorage', cartKey));
-  const quantityOf = item => {
-    const quantity = quantities[item.image];
-    return Number.isSafeInteger(quantity) && quantity > 0 && quantity <= 999 ? quantity : 0;
-  };
-  const lines = menuItems.filter(quantityOf).map(item => {
-    const quantity = quantityOf(item);
-    return { item, quantity, total: priceInCents(item) * quantity };
-  });
-  function change(item, delta) {
-    const next = { ...quantities };
-    const quantity = delta === null ? 0 : Math.min(999, quantityOf(item) + delta);
+  const latestQuantities = useRef(quantities);
+  const change = useCallback((item, delta) => {
+    const next = { ...latestQuantities.current };
+    const quantity = delta === null ? 0 : Math.min(999, getQuantity(next, item) + delta);
     if (quantity > 0) next[item.image] = quantity;
     else delete next[item.image];
+    latestQuantities.current = next;
     writeStored('localStorage', cartKey, next);
     setQuantities(next);
-  }
-  const cart = {
-    quantities, lines, quantityOf, change,
-    count: lines.reduce((sum, line) => sum + line.quantity, 0),
-    subtotal: lines.reduce((sum, line) => sum + line.total, 0),
-  };
+  }, []);
+  const cart = useMemo(() => {
+    const quantityOf = item => getQuantity(quantities, item);
+    const lines = menuItems.flatMap(item => {
+      const quantity = quantityOf(item);
+      return quantity ? [{ item, quantity, total: priceInCents(item) * quantity }] : [];
+    });
+    return {
+      quantities, lines, quantityOf, change,
+      count: lines.reduce((sum, line) => sum + line.quantity, 0),
+      subtotal: lines.reduce((sum, line) => sum + line.total, 0),
+    };
+  }, [quantities, change]);
 
   return <CartContext.Provider value={cart}>{children}</CartContext.Provider>;
 }
@@ -68,10 +74,9 @@ export function CartLink() {
   </a>;
 }
 
-export function Quantity({ item, cart }) {
-  const quantity = cart.quantityOf(item);
+export function Quantity({ item, quantity, onChange }) {
   function change(delta) {
-    cart.change(item, delta);
+    onChange(item, delta);
   }
   if (!quantity) {
     return <button type="button" className="w-commerce-commerceaddtocartbutton menu-cart-link reservation-add-button"
@@ -99,7 +104,7 @@ export function CartSummary({ cart, readOnly = false }) {
             <h3>{item.title}</h3>
             <div>{readOnly && <>Quantity: {quantity} · </>}{item.price} each</div>
             {!readOnly && <div className="reservation-cart-line-actions">
-              <Quantity item={item} cart={cart} />
+              <Quantity item={item} quantity={quantity} onChange={cart.change} />
               <button type="button" className="reservation-remove" aria-label={`Remove ${item.title}`}
                 onClick={() => cart.change(item, null)}>Remove</button>
             </div>}

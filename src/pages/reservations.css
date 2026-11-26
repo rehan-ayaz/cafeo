@@ -68,20 +68,7 @@
   overflow-wrap: anywhere;
 }
 
-.reservations-page .reservation-feedback .btn-block {
-  margin: 5px 0 20px;
-}
-
-.reservations-page .reservation-summary {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-family: var(--body-font);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
-.reservations-page .section-desc a,
-.reservations-page .reservation-feedback p a {
+.reservations-page .section-desc a {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
