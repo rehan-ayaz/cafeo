@@ -2,7 +2,7 @@ import { memo, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Quantity, useReservationCart } from './ReservationCart';
 import '../pages/menu-preview.css';
 
-const MenuItemCard = memo(function MenuItemCard({ item, quantity, onChange, onPreview }) {
+const MenuItemCard = memo(function MenuItemCard({ item, index = 0, quantity, onChange, onPreview }) {
   return (
     <div data-menu-item={item.image} role="listitem" className="w-dyn-item">
       <div
@@ -30,7 +30,8 @@ const MenuItemCard = memo(function MenuItemCard({ item, quantity, onChange, onPr
           <button type="button" className="menu-preview-trigger" aria-haspopup="dialog"
             aria-label={`View ${item.menuTitle}`} onClick={() => onPreview(item)}>
             <img
-              loading="lazy"
+              loading={index < 2 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
               decoding="async"
               width="417"
               height="413"
@@ -61,7 +62,7 @@ export default function MenuItemGrid({ items, grid }) {
     <div className="menu-section-inner">
       <div className="w-dyn-list">
         <div ref={grid} role="list" className="menu-item-grid w-dyn-items">
-          {items.map(item => <MenuItemCard key={item.image} item={item} quantity={cart.quantityOf(item)}
+          {items.map((item, index) => <MenuItemCard key={item.image} item={item} index={index} quantity={cart.quantityOf(item)}
             onChange={cart.change} onPreview={setPreview} />)}
         </div>
       </div>

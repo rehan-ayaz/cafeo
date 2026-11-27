@@ -22,8 +22,7 @@ export function useCafeo(pageId, title, bodyClass = 'body') {
     // Remove any third-party badge elements from DOM
     document.querySelectorAll('.w-webflow-badge, .w-cafeo-badge, a[href*="webflow.com"]').forEach(el => el.remove());
 
-    const timer = setTimeout(() => {
-      // Clean up any dynamically appended badge elements
+    const refreshEngine = () => {
       document.querySelectorAll('.w-webflow-badge, .w-cafeo-badge, a[href*="webflow.com"]').forEach(el => el.remove());
 
       const engine = window.Cafeo || window.Webflow;
@@ -46,9 +45,15 @@ export function useCafeo(pageId, title, bodyClass = 'body') {
           // Suppressed for clean console output
         }
       }
-    }, 100);
+    };
 
-    return () => clearTimeout(timer);
+    const timer = setTimeout(refreshEngine, 100);
+    window.addEventListener('cafeo:ready', refreshEngine, { once: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('cafeo:ready', refreshEngine);
+    };
   }, [location.pathname, pageId, title, bodyClass]);
 
   useEffect(() => {

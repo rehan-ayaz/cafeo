@@ -27,7 +27,7 @@ try {
     await rm(serverOutput, { recursive: true, force: true });
   }
 }
-const { blogPaths, renderBlog, siteOrigin } = prerender;
+const { blogPaths, renderBlog, renderHome, sitePages, siteOrigin } = prerender;
 const manifest = JSON.parse(await readFile(resolve(output, '.vite/manifest.json'), 'utf8'));
 const blogCss = manifest['src/pages/Blog.jsx'].css || [];
 const indexPath = join(output, 'index.html');
@@ -45,14 +45,35 @@ let styleCount = 0;
 shell = shell.replace(/<link\b[^>]*href="\/assets\/css\/(?:fonts|cafeo|site-consistency)\.css"[^>]*>/g, () =>
   styleCount++ === 0 ? `<link rel="stylesheet" href="/assets/css/${cssFile}"/>` : '');
 if (styleCount !== sharedStyles.length) throw new Error('Expected three shared stylesheets in the site shell');
-await writeFile(indexPath, shell);
+
 const escape = text => text.replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
 
+if (Array.isArray(sitePages)) {
+  for (const page of sitePages) {
+    const html = page.render();
+    let document = shell.replace(/<title>[^<]*<\/title>/, '<title>' + escape(page.title) + '</title>');
+    document = document.replace('<!-- PAGE_PRELOAD -->', page.preload || '');
+    document = document.replace('<div id="root"></div>', '<div id="root">' + html + '</div>');
+    if (page.path === '/') {
+      await writeFile(indexPath, document);
+    } else {
+      const pageDir = resolve(output, page.path.slice(1));
+      await mkdir(pageDir, { recursive: true });
+      await writeFile(resolve(pageDir, 'index.html'), document);
+      await writeFile(resolve(output, page.path.slice(1) + '.html'), document);
+    }
+  }
+} else {
+  const indexDoc = typeof renderHome === 'function' ? shell.replace('<div id="root"></div>', '<div id="root">' + renderHome() + '</div>') : shell;
+  await writeFile(indexPath, indexDoc.replace('<!-- PAGE_PRELOAD -->', ''));
+}
+
 for (const path of blogPaths) {
   const { html, metadata } = renderBlog(path);
-  let document = shell.replace(/<title>[^<]*<\/title>/, '<title>' + escape(metadata.title) + '</title>');
+  let document = shell.replace(/<title>[^<]*<\/title>/, '<title>' + escape(metadata.title) + '</title>')
+    .replace('<!-- PAGE_PRELOAD -->', '');
   const originals = [];
   for (const [attribute, key] of metadata.meta) {
     const pattern = new RegExp('<meta(?=[^>]*\\b' + attribute + '="' + key + '")[^>]*>', 'g');
@@ -69,7 +90,7 @@ for (const path of blogPaths) {
     ...(metadata.schema ? ['<script data-cafeo-blog type="application/ld+json">' +
       JSON.stringify(metadata.schema).replace(/</g, '\\u003c') + '</script>'] : []),
     '<script id="cafeo-original-head" type="application/json">' +
-      JSON.stringify(originals.join('')).replace(/</g, '\\u003c') + '</script>',
+    JSON.stringify(originals.join('')).replace(/</g, '\\u003c') + '</script>',
   ].join('\n');
   document = document.replace('</head>', head + '\n</head>');
   document = document.replace('<div id="root"></div>', '<div id="root">' + html + '</div>');

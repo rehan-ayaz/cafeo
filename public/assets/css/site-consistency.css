@@ -278,10 +278,7 @@ body {
 
 .home-hero,
 .home-hero .hero-bg-animation {
-  background-image: url("../images/hero_cafeo_regenerated-night.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #0c0b0b;
 }
 
 @media (max-width: 767px), (max-width: 991px) and (max-height: 500px) and (orientation: landscape) {

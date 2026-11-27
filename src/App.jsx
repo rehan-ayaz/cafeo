@@ -11,7 +11,7 @@ const Cart = lazy(() => import('./pages/Cart'));
 const Reservations = lazy(() => import('./pages/Reservations'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Home2 = lazy(() => import('./pages/Home2'));
-const Home = lazy(() => import('./pages/Home'));
+import Home from './pages/Home';
 const Menu = lazy(() => import('./pages/Menu'));
 const TeamProfile = lazy(() => import('./components/TeamRoster').then(module => ({ default: module.TeamProfile })));
 const Team = lazy(() => import('./pages/Team'));
