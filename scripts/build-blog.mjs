@@ -27,7 +27,7 @@ try {
     await rm(serverOutput, { recursive: true, force: true });
   }
 }
-const { blogPaths, renderBlog, renderHome, sitePages, siteOrigin } = prerender;
+const { blogPaths, renderBlog, sitePages, siteOrigin } = prerender;
 const manifest = JSON.parse(await readFile(resolve(output, '.vite/manifest.json'), 'utf8'));
 const blogCss = manifest['src/pages/Blog.jsx'].css || [];
 const indexPath = join(output, 'index.html');
@@ -50,24 +50,19 @@ const escape = text => text.replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character]);
 
-if (Array.isArray(sitePages)) {
-  for (const page of sitePages) {
-    const html = page.render();
-    let document = shell.replace(/<title>[^<]*<\/title>/, '<title>' + escape(page.title) + '</title>');
-    document = document.replace('<!-- PAGE_PRELOAD -->', page.preload || '');
-    document = document.replace('<div id="root"></div>', '<div id="root">' + html + '</div>');
-    if (page.path === '/') {
-      await writeFile(indexPath, document);
-    } else {
-      const pageDir = resolve(output, page.path.slice(1));
-      await mkdir(pageDir, { recursive: true });
-      await writeFile(resolve(pageDir, 'index.html'), document);
-      await writeFile(resolve(output, page.path.slice(1) + '.html'), document);
-    }
+for (const page of sitePages) {
+  const html = page.render();
+  let document = shell.replace(/<title>[^<]*<\/title>/, '<title>' + escape(page.title) + '</title>');
+  document = document.replace('<!-- PAGE_PRELOAD -->', page.preload || '');
+  document = document.replace('<div id="root"></div>', '<div id="root">' + html + '</div>');
+  if (page.path === '/') {
+    await writeFile(indexPath, document);
+  } else {
+    const pageDir = resolve(output, page.path.slice(1));
+    await mkdir(pageDir, { recursive: true });
+    await writeFile(resolve(pageDir, 'index.html'), document);
+    await writeFile(resolve(output, page.path.slice(1) + '.html'), document);
   }
-} else {
-  const indexDoc = typeof renderHome === 'function' ? shell.replace('<div id="root"></div>', '<div id="root">' + renderHome() + '</div>') : shell;
-  await writeFile(indexPath, indexDoc.replace('<!-- PAGE_PRELOAD -->', ''));
 }
 
 for (const path of blogPaths) {

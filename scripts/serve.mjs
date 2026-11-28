@@ -65,8 +65,8 @@ const server = createServer(async (request, response) => {
         response.writeHead(404).end('File not found');
         return;
       }
-      status = path.startsWith('/blog/') ? 404 : 200;
-      file = resolve(directory, 'index.html');
+      status = 404;
+      file = resolve(directory, '404.html');
       info = await stat(file);
     }
 

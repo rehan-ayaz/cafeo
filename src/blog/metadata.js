@@ -1,6 +1,6 @@
 import { categoryPath, postPath } from './posts';
 
-export const siteOrigin = (import.meta.env.VITE_CAFEO_SITE_ORIGIN || 'https://cafeo.com').replace(/\/$/, '');
+export const siteOrigin = (import.meta.env.VITE_CAFEO_SITE_ORIGIN || 'https://cafeo-site.vercel.app').replace(/\/$/, '');
 const absolute = path => new URL(path, siteOrigin).href;
 
 export function blogMetadata(post, image, missing = false) {

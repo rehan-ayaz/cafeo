@@ -2,6 +2,13 @@ import { memo, useId, useLayoutEffect, useRef, useState } from 'react';
 import { Quantity, useReservationCart } from './ReservationCart';
 import '../pages/menu-preview.css';
 
+function MenuItemActions({ item, quantity, onChange }) {
+  return <div className="menu-item-actions">
+    <Quantity item={item} quantity={quantity} onChange={onChange} />
+    {quantity > 0 && <a href="/cart" className="menu-cart-link reservation-add-button menu-view-cart">View Cart</a>}
+  </div>;
+}
+
 const MenuItemCard = memo(function MenuItemCard({ item, index = 0, quantity, onChange, onPreview }) {
   return (
     <div data-menu-item={item.image} role="listitem" className="w-dyn-item">
@@ -18,9 +25,7 @@ const MenuItemCard = memo(function MenuItemCard({ item, index = 0, quantity, onC
             {item.desc}
           </div>
           <div className="menu-price-box">
-            <div>
-              <Quantity item={item} quantity={quantity} onChange={onChange} />
-            </div>
+            <MenuItemActions item={item} quantity={quantity} onChange={onChange} />
             <div>
               <div className="menu-price-text">{item.price}</div>
             </div>
@@ -40,7 +45,9 @@ const MenuItemCard = memo(function MenuItemCard({ item, index = 0, quantity, onC
               className="menu-image"
               style={{ objectFit: 'cover' }}
             />
-            <span className="round-btn-text">View</span>
+            <span className="gallery-lightbox-link menu-preview-badge" aria-hidden="true">
+              <span className="round-btn-text">View</span>
+            </span>
           </button>
         </div>
       </div>
@@ -78,7 +85,7 @@ export default function MenuItemGrid({ items, grid }) {
           <p>{preview.desc}</p>
           <div className="menu-preview-actions">
             <strong>{preview.price}</strong>
-            <Quantity item={preview} quantity={cart.quantityOf(preview)} onChange={cart.change} />
+            <MenuItemActions item={preview} quantity={cart.quantityOf(preview)} onChange={cart.change} />
           </div>
         </div>
         <button type="button" className="menu-preview-close" autoFocus aria-label="Close product details"

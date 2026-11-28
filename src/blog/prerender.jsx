@@ -13,22 +13,24 @@ import ContactUs from '../pages/ContactUs';
 import Reservations from '../pages/Reservations';
 import Team from '../pages/Team';
 import Checkout from '../pages/Checkout';
+import Cart from '../pages/Cart';
+import Page404 from '../pages/Page404';
+import { TeamProfile } from '../components/TeamRoster';
+import { team } from '../teamCatalog';
 
 export { siteOrigin };
 export const blogPaths = ['/blog', ...posts.map(postPath)];
 
-export function renderPage(path, Component) {
+export function renderPage(path, Component, route = path) {
   return renderToString(
     <StaticRouter location={path}>
       <ReservationCartProvider>
-        <Component />
+        <Routes>
+          <Route path={route} element={<Component />} />
+        </Routes>
       </ReservationCartProvider>
     </StaticRouter>
   );
-}
-
-export function renderHome() {
-  return renderPage('/', Home);
 }
 
 export const sitePages = [
@@ -78,8 +80,25 @@ export const sitePages = [
     path: '/checkout',
     title: 'Checkout - Cafeo',
     render: () => renderPage('/checkout', Checkout),
-    preload: '',
   },
+  {
+    path: '/cart',
+    title: 'Your Cart - Cafeo',
+    render: () => renderPage('/cart', Cart),
+  },
+  {
+    path: '/404',
+    title: '404 Not Found - Cafeo',
+    render: () => renderPage('/404', Page404),
+  },
+  ...team.map(member => {
+    const path = '/team/' + member.slug;
+    return {
+      path,
+      title: member.name + ' | Cafeo',
+      render: () => renderPage(path, TeamProfile, '/team/:slug'),
+    };
+  }),
 ];
 
 export function renderBlog(path) {

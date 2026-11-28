@@ -58,7 +58,7 @@
 .cafeo-blog-cta .btn-block, .cafeo-blog-missing .btn-block { color: white; text-decoration: none; font-size: .95rem; }
 .cafeo-blog-missing .btn-block { background: var(--dark); }
 .cafeo-blog-related { margin: clamp(2.5rem, 6vw, 5rem) 0 1.5rem; }
-.cafeo-blog a:focus-visible, .cafeo-blog button:focus-visible, .cafeo-blog input:focus-visible { outline: 2px solid var(--skin); outline-offset: 3px; }
+.cafeo-blog a:focus-visible, .cafeo-blog button:focus-visible { outline: 2px solid var(--skin); outline-offset: 3px; }
 @media (prefers-reduced-motion: no-preference) {
   html:has(.cafeo-blog) { scroll-behavior: smooth; }
 }
